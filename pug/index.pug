@@ -1,0 +1,148 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    title Lemon | PubConf Minneapolis 
+    link(rel="stylesheet" href="css/reveal.css")
+    link(rel="stylesheet" href="css/theme/serif.css")
+    link(rel="stylesheet" href="lib/css/zenburn.css")
+    link(rel="stylesheet" href="css/lemon-slides.css")
+  body
+    
+    mixin techLogo(name, fragment, fileType)
+      if fileType == "png"
+        -src = 'img/'+name+'.png'
+      else
+        -src = 'svg/'+name+'.svg'
+      if fragment
+        .logo.fragment
+          img(src=src)
+      else
+        .logo
+          img(src=src)
+    
+    .reveal
+      .slides
+        section
+          section
+            h1 Let's get started.
+            //-
+              h3 Navigation:
+              ol
+                li Use the spacebar to go to the next frame.
+                li Arrow keys also work, but the slides go up/down as well as left/right.
+                li Hit ESC for a zoomed out view.
+        section
+          section
+            h2 1
+            h4 Social Proof
+          section
+            h2 Slide 1
+            h3 Frame 2
+          section
+            h2 Slide 1
+            h3 Frame 3
+        section
+          section
+            h2 2
+            h4 SEO
+        section
+          section
+            h2 3
+            h4 Schema
+        section
+          section
+            h2 4
+            h4 Google Sidebar
+        section
+          section
+            h2 5
+            h4 damn.dog
+        section
+          section
+            h2 6
+            h4 PewDiePie
+        section
+          section
+            h2 7
+            h4 PewDiePie
+        section
+          section
+            h2 8
+            h4 Popularity
+        section
+          section
+            h2 Slide 9
+        section
+          section
+            h2 Slide 10
+        section
+          section
+            h2 Slide 11
+        section
+          section
+            h2 Slide 12
+        section
+          section
+            h2 Slide 13
+        section
+          section
+            h2 Slide 14
+        section
+          section
+            h2 Slide 15
+              
+              
+    .my-progress#myProgress
+      .progress-bar#myBar
+    script(src="lib/js/head.min.js")
+    script(src="js/reveal.js")
+    script(type="text/javascript").
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+          history: false,
+          loop: true,
+          progress: true,
+          autoSlide: 15000,
+
+          // More info https://github.com/hakimel/reveal.js#dependencies
+          dependencies: [
+              { src: 'plugin/markdown/marked.js' },
+              { src: 'plugin/markdown/markdown.js' },
+              { src: 'plugin/notes/notes.js', async: true },
+              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+          ]
+      });
+      
+      
+    //- script.
+      
+      var width = 0;
+      var elem = document.getElementById("myBar");
+      
+      
+
+      function advanceFrame() {
+        width = 0;
+        move();
+        Reveal.right();
+      }
+      
+      function move() {
+        
+        var id = setInterval(frame, 10);
+        function frame() {
+          if (width >= 100) {
+            clearInterval(id);
+            advanceFrame();
+          } else {
+            width = width + 0.065; 
+            elem.style.width = width + '%'; 
+            //elem.innerHTML = width.toFixed(1)  + '%';
+          }
+        }
+      }
+      
+      move();
+      
