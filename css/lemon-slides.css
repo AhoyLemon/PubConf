@@ -280,7 +280,10 @@ svg {
       content: "\2013"; }
 
 .reveal .progress {
-  bottom: 12px; }
+  height: 9px; }
+
+.reveal section img {
+  border: none; }
 
 .my-progress {
   position: fixed;
@@ -290,5 +293,3 @@ svg {
   .my-progress .progress-bar {
     background-color: #3e98f2;
     height: 12px; }
-
-/*# sourceMappingURL=lemon-slides.css.map */

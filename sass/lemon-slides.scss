@@ -39,8 +39,8 @@
     }
   }
   
-  .progress { bottom:12px; }
-  
+  .progress { height: 9px; }
+  section img { border:none; }
 }
 
 .my-progress { @include position(fixed,null,0,0,0);

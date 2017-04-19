@@ -1,0 +1,108 @@
+doctype html
+html(lang="en")
+  head
+    style.
+      @mixin flex-container($align:stretch, $direction:row, $wrap:wrap) {
+        display: flex;
+        flex-direction: $direction;
+        flex-wrap: $wrap;
+        @if ($align != "stretch") {
+          align-items: $align;
+        }
+      }
+      i { font-style:italic; }
+
+
+      @mixin flex-item($basis, $grow:1, $shrink:1, $align:auto) {
+        @if $grow == 0 {
+          width:$basis;
+          flex-basis: $basis;
+        } @else {
+          flex-basis: $basis;
+        }
+        flex-grow: $grow;
+        flex-shrink: $shrink;
+        align-self: $align;
+      }
+
+
+      body { font-family:'Lora', serif; padding-right:1em; background-color:#222; }
+      h1 { font-size:4em; text-align:center; margin-top:1em; margin-bottom:2.5em; font-weight:bold; }
+      canvas { max-width:100%; padding:1em;
+        position:relative;
+      }
+      p { padding:1.5em; opacity:0.7; font-size:85%; }
+
+      .chart-grid { @include flex-container(); padding:3em; }
+    body
+      .chart-grid
+        .full
+          canvas#GABrowsers(width="160" height="90")
+          
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js")
+    script.
+      var browsersGA = document.getElementById('GABrowsers');
+      Chart.defaults.global.defaultFontSize = 30;
+      Chart.defaults.global.defaultFontColor = '#fff';
+      //var browsersPiwik = document.getElementById('PiwikBrowsers');
+
+      var circleLegend = {
+        labels: {
+          fontSize: 30,
+          fontFamily: "Lora",
+          boxWidth: 22,
+          usePointStyle: true,
+          padding: 10
+        }
+      }
+      var percentTooltip = {
+        mode: 'label',
+        callbacks: {
+          label: function(tooltipItem, data) {
+            return data['labels'][tooltipItem['index']] + ": " + data['datasets'][0]['data'][tooltipItem['index']] + '%';
+          }
+        }
+      }
+
+      var d = {
+        borderWidth: 3,
+        pointBorderWidth: 5,
+        pointHoverRadius: 8,
+        pointHoverBorderWidth: 6,
+        pointHitRadius: 8
+      }
+
+      // Browser stats
+      var gaBrowsers = new Chart(browsersGA, {
+        type: 'pie',
+        options: {
+          title: {
+            display: true,
+            text: "code written for",
+            fontSize: 22,
+            fontFamily: "'Lora', serif"
+          },
+          legend: circleLegend,
+          tooltips: percentTooltip
+        },
+        data: {
+          labels: [
+            "Humans",
+            "Robots"
+          ],
+          datasets: [{
+            data: [42, 138],
+            backgroundColor: [
+              "#d32e3d", // Chrome
+              "#8291af", // Firefox
+              "#03bce0", // Safari
+              "#3276bc", // Edge & IE
+              "#f9a020", // Amazon Silk
+              "#f40821", // Opera
+              "#a5c63b", // Android Browser
+              "#808080"  // Other
+            ]
+          }]
+        }
+      });
