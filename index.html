@@ -81,8 +81,8 @@
           </section>
         </section>
         <section>
-          <section data-background-image="img/bg/gizmodo-1.jpg" data-transition="none" data-autoslide="6000"></section>
-          <section data-background-image="img/bg/gizmodo-2.jpg" data-transition="none" data-autoslide="4000"></section>
+          <section data-background-image="img/bg/gizmodo-1.jpg" data-background-transition="none" data-autoslide="6000"></section>
+          <section data-background-image="img/bg/gizmodo-2.jpg" data-background-transition="none" data-autoslide="4000"></section>
           <section data-background-image="img/bg/blackstats2.jpg" data-autoslide="5000"></section>
         </section>
         <section>
@@ -119,14 +119,17 @@
           <section data-background-image="img/bg/blackstats-wtf.jpg" data-autoslide="6000"></section>
         </section>
         <section>
-          <section data-autoslide="4000">
-            <p>So, what to do next?</p>
+          <section data-autoslide="3000">
+            <h3>I'm not popular yet.</h3>
+            <p class="fragment" data-autoslide="3000">So, what to do next?</p>
           </section>
-          <section data-background-image="img/bg/typing.gif" data-autoslide="4000"></section>
-          <section data-autoslide="2000">
+          <section data-background-image="img/bg/typing.gif" data-autoslide="9000"></section>
+        </section>
+        <section>
+          <section data-autoslide="3000">
             <p>I make websites.</p>
           </section>
-          <section data-background-image="img/bg/beerdance.gif" data-autoslide="2000">
+          <section data-background-image="img/bg/beerdance.gif" data-autoslide="12000">
             <p>Making websites is fun.</p>
           </section>
         </section>
@@ -146,9 +149,8 @@
           </section>
         </section>
         <section>
-          <section data-background-image="img/bg/blackstats4.jpg" data-autoslide="5000"></section>
-          <section data-autoslide="5000">
-            <h2>Oh, I'm popular!</h2>
+          <section data-background-image="img/bg/blackstats4.jpg" data-autoslide="5000">
+            <h2 class="fragment" data-autoslide="5000">Oh, I'm popular!</h2>
           </section>
           <section data-background-image="img/bg/boredcat.jpg" data-autoslide="5000">
             <h2>Oh, I'm popular?</h2>
@@ -180,9 +182,13 @@
       // More info https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
           history: true,
+          controls: false,
           loop: false,
           progress: true,
           autoSlide: 15000,
+          backgroundTransition: 'none',
+          //parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+          //parallaxBackgroundSize: "2100px 900px",
       
           // More info https://github.com/hakimel/reveal.js#dependencies
           dependencies: [
